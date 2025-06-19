@@ -3,46 +3,13 @@ local IsSitting = false
 local ClonedEntity = false
 local OldEntity = 0
 
-local function RotateOffset(offset, heading)
-    local rad = math.rad(heading)
-    local cosH = math.cos(rad)
-    local sinH = math.sin(rad)
-
-    local newX = offset.x * cosH - offset.y * sinH
-    local newY = offset.x * sinH + offset.y * cosH
-
-    return vec3(newX, newY, offset.z)
-end
-
-local function IsSeatOccupied(entity)
-    local modelHash = GetEntityModel(entity)
-    local modelData = models[modelHash]
-    if not modelData then return end
-
-    local entityNetID = NetworkGetNetworkIdFromEntity(entity)
-    local seats = lib.callback.await("mnr_sitanywhere:server:GetModelSeats", 200, entityNetID)
-
-    if seats == 0 then
-        return false, 1
-    end
-
-    if seats == modelData.maxSeats then
-        return true, false
-    else
-        return false, seats + 1
-    end
-end
-
 local function CloneAndNetworkEntity(entity)
     if not DoesEntityExist(entity) then
         return nil, nil
     end
 
     local modelHash = GetEntityModel(entity)
-    RequestModel(modelHash)
-    while not HasModelLoaded(modelHash) do
-        Wait(10)
-    end
+    lib.requestModel(modelHash)
 
     local entityCoords = GetEntityCoords(entity)
     local entityHeading = GetEntityHeading(entity)
@@ -64,9 +31,11 @@ local function CloneAndNetworkEntity(entity)
 end
 
 local function NetworkChair(entity, action)
-    if action == "register" then
-        if not entity then return false, nil end
+    if not entity then
+        return false, nil
+    end
 
+    if action == "register" then
         local isLocal = NetworkGetEntityIsLocal(entity)
         if isLocal then
             NetworkRegisterEntityAsNetworked(entity)
@@ -96,6 +65,36 @@ local function NetworkChair(entity, action)
             ClonedEntity = false
         end
     end
+end
+
+local function IsSeatOccupied(entity)
+    local modelHash = GetEntityModel(entity)
+    local modelData = models[modelHash]
+    if not modelData then return end
+
+    local entityNetID = NetworkGetNetworkIdFromEntity(entity)
+    local seats = lib.callback.await("mnr_sitanywhere:server:GetModelSeats", 200, entityNetID)
+
+    if seats == 0 then
+        return false, 1
+    end
+
+    if seats == modelData.maxSeats then
+        return true, false
+    else
+        return false, seats + 1
+    end
+end
+
+local function RotateOffset(offset, heading)
+    local rad = math.rad(heading)
+    local cosH = math.cos(rad)
+    local sinH = math.sin(rad)
+
+    local newX = offset.x * cosH - offset.y * sinH
+    local newY = offset.x * sinH + offset.y * cosH
+
+    return vec3(newX, newY, offset.z)
 end
 
 local function PlaySit(entity, seatID)
