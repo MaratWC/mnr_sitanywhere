@@ -1,5 +1,5 @@
 local state = {}
-local state._index = state
+state._index = state
 
 function state:init()
     self.sitting = false
