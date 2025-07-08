@@ -108,7 +108,7 @@ local function PlaySit(entity, seatID)
 
     local entityCoords = GetEntityCoords(entity)
     local entityHeading = GetEntityHeading(entity)
-    local seatOffset = modelData.seats[seatID].offset
+    local seatOffset = modelData.seats[seatID]
     local rotatedOffset = RotateOffset(seatOffset, entityHeading)
     local position = entityCoords + rotatedOffset
     local heading = entityHeading + seatOffset.w
