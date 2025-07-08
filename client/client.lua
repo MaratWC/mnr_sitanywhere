@@ -1,7 +1,5 @@
 local models = lib.load("config.config")
-local IsSitting = false
-local ClonedEntity = false
-local OldEntity = 0
+local state = require "client.state"
 
 local function CloneAndNetworkEntity(entity)
     if not DoesEntityExist(entity) then
@@ -24,9 +22,8 @@ local function CloneAndNetworkEntity(entity)
     NetworkRegisterEntityAsNetworked(clonedEntity)
 
     SetEntityVisible(entity, false, false)
-    OldEntity = entity
 
-    ClonedEntity = true
+    state:set("clonedEntity", clonedEntity)
     return clonedEntity
 end
 
@@ -57,12 +54,15 @@ local function NetworkChair(entity, action)
     end
 
     if action == "unregister" then
-        if ClonedEntity then
+        if state.clonedEntity ~= 0 then
             SetEntityAsNoLongerNeeded(entity)
-            SetEntityVisible(OldEntity, true, false)
+            SetEntityVisible(state.entity, true, false)
             NetworkUnregisterNetworkedEntity(entity)
             DeleteEntity(entity)
-            ClonedEntity = false
+            
+            state:set("clonedEntity", 0)
+        else
+            NetworkUnregisterNetworkedEntity(entity)
         end
     end
 end
@@ -98,7 +98,9 @@ local function RotateOffset(offset, heading)
 end
 
 local function PlaySit(entity, seatID)
-    IsSitting = entity
+    state:set("sitting", true)
+    state:set("entity", entity)
+
     local entityNetID = NetworkGetNetworkIdFromEntity(entity)
     TriggerServerEvent("mnr_sitanywhere:server:ModelRegistration", entityNetID, seatID)
 
@@ -132,7 +134,8 @@ local function PlaySit(entity, seatID)
                 NetworkChair(entity, "unregister")
             end
             self:disable(true)
-            IsSitting = false
+            state:set("sitting", false)
+            state:set("entity", 0)
         end
     })
 
@@ -142,7 +145,7 @@ end
 
 RegisterNetEvent("mnr_sitanywhere:client:Sit", function(data)
     if not data.entity then return end
-    if IsSitting and IsSitting == data.entity then return end
+    if state.sitting == true and state.entity ~= 0 or state.entity == data.entity then return end
 
     local networkSuccess, entity = NetworkChair(data.entity, "register")
     if not networkSuccess then return end
@@ -163,3 +166,5 @@ for model in pairs(models) do
 end
 
 target.AddModels(targetModels)
+
+state:init()

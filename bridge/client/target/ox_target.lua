@@ -2,18 +2,18 @@
 
 if GetResourceState("ox_target") ~= "started" then return end
 
-local ox_target = exports.ox_target
+local state = require "client.state"
 
 target = {}
 
 function target.AddModels(models)
-    ox_target:addModel(models, {
+    exports.ox_target:addModel(models, {
         {
             label = locale("target.sit"),
             name = "mnr_sitanywhere:sit",
             icon = "fa-solid fa-chair",
             canInteract = function(entity)
-                return DoesEntityExist(entity)
+                return DoesEntityExist(entity) and not state.sitting
             end,
             event = "mnr_sitanywhere:client:Sit",
         }

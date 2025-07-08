@@ -2,12 +2,12 @@
 
 if GetResourceState("qb-target") ~= "started" then return end
 
-local qb_target = exports["qb-target"]
+local state = require "client.state"
 
 target = {}
 
 function target.AddModels(models)
-    qb_target:AddTargetModel(models, {
+    exports["qb-target"]:AddTargetModel(models, {
         options = {
             {
                 type = "client",
@@ -15,7 +15,7 @@ function target.AddModels(models)
                 icon = "fas fa-chair",
                 label = locale("target.sit"),
                 canInteract = function(entity)
-                    return DoesEntityExist(entity)
+                    return DoesEntityExist(entity) and not state.sitting
                 end
             }
         },
