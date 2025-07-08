@@ -113,7 +113,84 @@ return {
 			[3] = { offset = vec4(0.9, 0.0, 0.4, 180.0) },
 		},
 	},
+	[`prop_chair_01a`] = {
+		maxSeats = 1,
+		anim = { scenario = "PROP_HUMAN_SEAT_BENCH" },
+		seats = {
+			[1] = { offset = vec4(0.0, 0.08, 0.5, 180.0) },
+		},
+	},
+	[`prop_chair_01b`] = {
+		maxSeats = 1,
+		anim = { scenario = "PROP_HUMAN_SEAT_BENCH" },
+		seats = {
+			[1] = { offset = vec4(0.0, 0.02, 0.5, 180.0) },
+		},
+	},
+	[`prop_chair_02`] = {
+		maxSeats = 1,
+		anim = { scenario = "PROP_HUMAN_SEAT_BENCH" },
+		seats = {
+			[1] = { offset = vec4(0.0, 0.02, 0.5, 180.0) },
+		},
+	},
+	[`prop_chair_03`] = {
+		maxSeats = 1,
+		anim = { scenario = "PROP_HUMAN_SEAT_BENCH" },
+		seats = {
+			[1] = { offset = vec4(0.0, 0.02, 0.5, 180.0) },
+		},
+	},
+	[`prop_chair_04a`] = {
+		maxSeats = 1,
+		anim = { scenario = "PROP_HUMAN_SEAT_BENCH" },
+		seats = {
+			[1] = { offset = vec4(0.0, 0.02, 0.5, 180.0) },
+		},
+	},
+	[`prop_chair_04b`] = {
+		maxSeats = 1,
+		anim = { scenario = "PROP_HUMAN_SEAT_BENCH" },
+		seats = {
+			[1] = { offset = vec4(0.0, 0.02, 0.5, 180.0) },
+		},
+	},
+	[`prop_chair_05`] = {
+		maxSeats = 1,
+		anim = { scenario = "PROP_HUMAN_SEAT_BENCH" },
+		seats = {
+			[1] = { offset = vec4(0.0, 0.02, 0.5, 180.0) },
+		},
+	},
 	[`prop_chair_06`] = {
+		maxSeats = 1,
+		anim = { scenario = "PROP_HUMAN_SEAT_BENCH" },
+		seats = {
+			[1] = { offset = vec4(0.0, 0.0, 0.5, 180.0) },
+		},
+	},
+	[`prop_chair_07`] = {
+		maxSeats = 1,
+		anim = { scenario = "PROP_HUMAN_SEAT_BENCH" },
+		seats = {
+			[1] = { offset = vec4(0.0, 0.0, 0.5, 180.0) },
+		},
+	},
+	[`prop_chair_08`] = {
+		maxSeats = 1,
+		anim = { scenario = "PROP_HUMAN_SEAT_BENCH" },
+		seats = {
+			[1] = { offset = vec4(0.0, 0.0, 0.0, 180.0) },
+		},
+	},
+	[`prop_chair_09`] = {
+		maxSeats = 1,
+		anim = { scenario = "PROP_HUMAN_SEAT_BENCH" },
+		seats = {
+			[1] = { offset = vec4(0.0, 0.0, 0.5, 180.0) },
+		},
+	},
+	[`prop_chair_10`] = {
 		maxSeats = 1,
 		anim = { scenario = "PROP_HUMAN_SEAT_BENCH" },
 		seats = {
