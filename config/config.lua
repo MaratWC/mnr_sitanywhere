@@ -35,6 +35,22 @@ return {
 			[3] = { offset = vec4(0.7, -0.05, 0.5, 180.0) },
 		},
 	},
+	[`prop_bench_03`] = {
+		maxSeats = 2,
+		anim = { scenario = "PROP_HUMAN_SEAT_BENCH" },
+		seats = {
+			[1] = { offset = vec4(-0.5, -0.02, 0.4, 180.0) },
+			[2] = { offset = vec4(0.5, -0.02, 0.4, 180.0) },
+		},
+	},
+	[`prop_bench_04`] = {
+		maxSeats = 2,
+		anim = { scenario = "PROP_HUMAN_SEAT_BENCH" },
+		seats = {
+			[1] = { offset = vec4(-0.6, -0.02, 0.5, 180.0) },
+			[2] = { offset = vec4(0.6, -0.02, 0.5, 180.0) },
+		},
+	},
 	[`prop_bench_05`] = {
 		maxSeats = 3,
 		anim = { scenario = "PROP_HUMAN_SEAT_BENCH" },
@@ -53,6 +69,23 @@ return {
 			[3] = { offset = vec4(0.9, 0.0, 0.5, 180.0) },
 		},
 	},
+	[`prop_bench_07`] = {
+		maxSeats = 3,
+		anim = { scenario = "PROP_HUMAN_SEAT_BENCH" },
+		seats = {
+			[1] = { offset = vec4(0.95, -0.12, 0.51, 180.0) },
+			[2] = { offset = vec4(0.0, -0.12, 0.51, 180.0) },
+			[3] = { offset = vec4(1.9, -0.12, 0.51, 180.0) },
+		},
+	},
+	[`prop_bench_08`] = {
+		maxSeats = 2,
+		anim = { scenario = "PROP_HUMAN_SEAT_BENCH" },
+		seats = {
+			[1] = { offset = vec4(-0.7, 0.05, 0.45, 180.0) },
+			[2] = { offset = vec4(0.7, 0.05, 0.45, 180.0) },
+		},
+	},
 	[`prop_bench_09`] = {
 		maxSeats = 3,
 		anim = { scenario = "PROP_HUMAN_SEAT_BENCH" },
@@ -60,6 +93,24 @@ return {
 			[1] = { offset = vec4(0.0, -0.05, 0.3, 180.0) },
 			[2] = { offset = vec4(-0.8, -0.05, 0.3, 180.0) },
 			[3] = { offset = vec4(0.8, -0.05, 0.3, 180.0) },
+		},
+	},
+	[`prop_bench_10`] = {
+		maxSeats = 3,
+		anim = { scenario = "PROP_HUMAN_SEAT_BENCH" },
+		seats = {
+			[1] = { offset = vec4(0.0, -0.1, 0.5, 180.0) },
+			[2] = { offset = vec4(-0.9, -0.1, 0.5, 180.0) },
+			[3] = { offset = vec4(0.9, -0.1, 0.5, 180.0) },
+		},
+	},
+	[`prop_bench_11`] = {
+		maxSeats = 3,
+		anim = { scenario = "PROP_HUMAN_SEAT_BENCH" },
+		seats = {
+			[1] = { offset = vec4(0.0, 0.0, 0.4, 180.0) },
+			[2] = { offset = vec4(-0.9, 0.0, 0.4, 180.0) },
+			[3] = { offset = vec4(0.9, 0.0, 0.4, 180.0) },
 		},
 	},
 	[`prop_chair_06`] = {
